@@ -19,6 +19,8 @@ Qualquer código diferente do esperado, irá falhar o teste.
 Também foram utilizadas validações de conteúdo da resposta sempre que possível.
 
 Pesquisar: Além do código 200, valida se o conteúdo do JSON é o esperado e realiza o Teste de Contrato com o schema definido.
+O Schema foi feito utilizando o https://jsonschema.net/home e não foi alterado.
+
 Create e Update: Além do código, válida a resposta de sucesso.
 
 Devido ao desafio proposto, não me prolonguei em procurar utilizar BDD na escrita dos testes, mas não seria um problema de forma geral.
