@@ -4,8 +4,8 @@ import static org.hamcrest.Matchers.containsString;
 
 public class validateCreateUser {
     @Test
-    /*Chama o serviço pelo metodo POST*/
 
+    /*Chama o serviço pelo metodo POST para criação de users*/
     public void createUserTest() {
         String myJson = "{\"name\":\"Lucas Magno\",\"job\": \"QA Analyst\"}";
         String url = "https://reqres.in/api/users/";
@@ -16,7 +16,7 @@ public class validateCreateUser {
             when()
                 .post(url).prettyPeek().
             then()
-                .statusCode(201)
-                .body(containsString("createdAt"));
+                .statusCode(201) // validação código
+                .body(containsString("createdAt")); // validação de objeto
     }
 }

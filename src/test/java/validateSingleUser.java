@@ -17,10 +17,10 @@ String url = "https://reqres.in/api";
                 .get(url+"/users/2").prettyPeek().
             then()
                 .statusCode(200)
-                .body("data.email", equalTo("janet.weaver@reqres.in"))
-                .body("data.id", is(2)).
+                .body("data.email", equalTo("janet.weaver@reqres.in")) //Valida o email retornado com o esperado.
+                .body("data.id", is(2)). // Valida o ID retornado
             assertThat()
-                .body(matchesJsonSchemaInClasspath("schema_getSingleUser.json"));
+                .body(matchesJsonSchemaInClasspath("schema_getSingleUser.json")); //Teste de Contrato com o schema definido em \resources
     }
 
 

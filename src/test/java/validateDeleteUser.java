@@ -3,6 +3,7 @@ import static io.restassured.RestAssured.given;
 
 public class validateDeleteUser {
 
+/*Chama o DELETE para exclusão do usuario*/
 
     String url = "https://reqres.in/api/2";
     @Test
