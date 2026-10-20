@@ -1,0 +1,29 @@
+name: QA smoke diagnostic 20261020
+on:
+  push:
+    branches: [codex/qa-smoke-20261020]
+permissions:
+  contents: read
+jobs:
+  api-original:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Fetch isolated diagnostic branch
+        run: |
+          git init .
+          git remote add origin https://github.com/lucashestorn/apis_test_regres.git
+          git fetch --depth=1 origin "$GITHUB_SHA"
+          git checkout --detach FETCH_HEAD
+      - name: Verify runtime and install locked package
+        working-directory: qa-smoke-20261020
+        run: |
+          node --version
+          npm --version
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Validate generated TypeScript
+        working-directory: qa-smoke-20261020
+        run: npx tsc --noEmit
+      - name: Execute unmodified generated API test
+        working-directory: qa-smoke-20261020
+        run: npx playwright test --reporter=list
